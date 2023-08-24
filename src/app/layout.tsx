@@ -1,6 +1,11 @@
-import './globals.css'
+import { ClerkProvider } from '@clerk/nextjs'
+import '../styles/globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import ModalProvider from '@/providers/modal-provider'
+import { Toaster } from '@/components/ui/toaster'
+import Providers from '@/providers/providers'
+import { ThemeProvider } from '@/providers/theme-provider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,8 +20,21 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+
+    <ClerkProvider>
+      <Providers>
+        <html lang="en">
+          <body className={inter.className}>
+            <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+              <ModalProvider />
+              {children}
+              <Toaster />
+            </ThemeProvider>
+            
+          </body>
+        </html>
+      </Providers>
+    </ClerkProvider>
+    
   )
 }
