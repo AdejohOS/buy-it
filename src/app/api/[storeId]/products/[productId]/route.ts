@@ -168,7 +168,7 @@ export async function DELETE(
         }
 
 
-        const product = await db.product.deleteMany({
+        const product = await db.product.delete({
             where: {
                 id: params.productId 
             }
