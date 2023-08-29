@@ -30,14 +30,14 @@ export const CellAction = ({data}: CellActionProps) => {
     const onDelete = async () => {
         try {
             setLoading(true)
-            await axios.delete(`/api/${params.storeId}/billboards/${data.id}`)
+            await axios.delete(`/api/${params.storeId}/billboards/${data.id}`);
             router.refresh()
             toast({
                 description: 'Billboard deleted'
             })
         } catch (error) {
             toast({
-                description: 'Make sure you remove all categories using this billboard'
+                description: 'Make sure you remove all categories using this billboard first'
             })
         } finally {
             setLoading(false)

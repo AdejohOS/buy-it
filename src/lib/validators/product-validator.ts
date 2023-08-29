@@ -1,7 +1,7 @@
 import { z } from 'zod'
 
 export const ProductValidator = z.object({
-    name: z.string().min(1).max(300),
+    name: z.string().min(1),
     images: z.object({url: z.string() }).array(),
     price: z.coerce.number().min(1),
     categoryId: z.string().min(1),

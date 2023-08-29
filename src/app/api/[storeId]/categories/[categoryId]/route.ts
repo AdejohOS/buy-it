@@ -131,7 +131,7 @@ export async function DELETE(
         }
 
 
-        const category = await db.category.deleteMany({
+        const category = await db.category.delete({
             where: {
                 id: params.categoryId 
             }

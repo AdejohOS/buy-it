@@ -30,14 +30,15 @@ export const CellAction = ({data}: CellActionProps) => {
     const onDelete = async () => {
         try {
             setLoading(true)
-            await axios.delete(`/api/${params.storeId}/products/${data.id}`)
+            await axios.delete(`/api/${params.storeId}/products/${data.id}`);
+
             router.refresh()
             toast({
                 description: 'Product deleted'
             })
         } catch (error) {
             toast({
-                description: 'Make sure you remove all categories using this product'
+                description: 'Something went wrong'
             })
         } finally {
             setLoading(false)

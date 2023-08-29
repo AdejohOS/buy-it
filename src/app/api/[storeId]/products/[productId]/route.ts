@@ -178,15 +178,7 @@ export async function DELETE(
         
     } catch (error) {
         
-        if (error instanceof z.ZodError) {
-            return new NextResponse('Invalid request data passed', {status: 422} )
-        }
-
-        return new NextResponse(
-            'Could not post to store at this time, try again later', 
-            {
-                status: 500
-            }
-        )
+        console.log('[PRODUCT_DELETE]', error);
+        return new NextResponse("Internal error", { status: 500 });
     }
 }

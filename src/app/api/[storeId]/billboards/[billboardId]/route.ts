@@ -122,7 +122,7 @@ export async function DELETE(
         }
 
 
-        const billboard = await db.billboard.deleteMany({
+        const billboard = await db.billboard.delete({
             where: {
                 id: params.billboardId 
             }
@@ -132,15 +132,8 @@ export async function DELETE(
         
     } catch (error) {
         
-        if (error instanceof z.ZodError) {
-            return new NextResponse('Invalid request data passed', {status: 422} )
-        }
+        console.log('[BILLBOARD_DELETE]', error);
+        return new NextResponse("Internal error", { status: 500 });
 
-        return new NextResponse(
-            'Could not post to store at this time, try again later', 
-            {
-                status: 500
-            }
-        )
     }
 }

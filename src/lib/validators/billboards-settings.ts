@@ -1,7 +1,7 @@
 import { z } from 'zod'
 
 export const BillboardsFormValidator = z.object({
-    label: z.string().min(1).max(30),
+    label: z.string().min(1),
     imageUrl: z.string().min(1)
 })
 
